@@ -40,7 +40,7 @@ class AdminCabangManagementTest extends TestCase
         $cabang = Cabang::factory()->create(['nama' => 'Cabang Sukajadi']);
         $admin = User::factory()->adminCabang()->for($cabang)->create([
             'name' => 'Ahmad Admin',
-            'email' => 'ahmad@sigalon.test',
+            'email' => 'ahmad@auflow.test',
         ]);
 
         $response = $this->actingAs($superAdmin)
@@ -48,7 +48,7 @@ class AdminCabangManagementTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('Ahmad Admin');
-        $response->assertSee('ahmad@sigalon.test');
+        $response->assertSee('ahmad@auflow.test');
         $response->assertSee('Cabang Sukajadi');
     }
 
@@ -73,7 +73,7 @@ class AdminCabangManagementTest extends TestCase
         $response = $this->actingAs($superAdmin)
             ->post(route('admin.admin-cabang.store'), [
                 'name' => 'Admin Baru',
-                'email' => 'admin.baru@sigalon.test',
+                'email' => 'admin.baru@auflow.test',
                 'password' => 'password123',
                 'cabang_id' => $cabang->id,
             ]);
@@ -81,7 +81,7 @@ class AdminCabangManagementTest extends TestCase
         $response->assertRedirect(route('admin.admin-cabang.index'));
         $response->assertSessionHas('status', __('Akun Admin Cabang berhasil dibuat.'));
 
-        $createdUser = User::where('email', 'admin.baru@sigalon.test')->first();
+        $createdUser = User::where('email', 'admin.baru@auflow.test')->first();
         $this->assertNotNull($createdUser);
         $this->assertSame('Admin Baru', $createdUser->name);
         $this->assertSame(Role::AdminCabang, $createdUser->role);
@@ -93,12 +93,12 @@ class AdminCabangManagementTest extends TestCase
     public function test_create_admin_cabang_validation_rules(): void
     {
         $superAdmin = User::factory()->superAdmin()->create();
-        $existing = User::factory()->create(['email' => 'existing@sigalon.test']);
+        $existing = User::factory()->create(['email' => 'existing@auflow.test']);
 
         $response = $this->actingAs($superAdmin)
             ->post(route('admin.admin-cabang.store'), [
                 'name' => '',
-                'email' => 'existing@sigalon.test',
+                'email' => 'existing@auflow.test',
                 'password' => 'pendek',
                 'cabang_id' => 99999,
             ]);
@@ -127,13 +127,13 @@ class AdminCabangManagementTest extends TestCase
         $cabang2 = Cabang::factory()->create();
         $admin = User::factory()->adminCabang()->for($cabang1)->create([
             'name' => 'Nama Lama',
-            'email' => 'lama@sigalon.test',
+            'email' => 'lama@auflow.test',
         ]);
 
         $response = $this->actingAs($superAdmin)
             ->put(route('admin.admin-cabang.update', $admin), [
                 'name' => 'Nama Baru',
-                'email' => 'baru@sigalon.test',
+                'email' => 'baru@auflow.test',
                 'cabang_id' => $cabang2->id,
             ]);
 
@@ -142,7 +142,7 @@ class AdminCabangManagementTest extends TestCase
 
         $admin->refresh();
         $this->assertSame('Nama Baru', $admin->name);
-        $this->assertSame('baru@sigalon.test', $admin->email);
+        $this->assertSame('baru@auflow.test', $admin->email);
         $this->assertSame($cabang2->id, $admin->cabang_id);
     }
 

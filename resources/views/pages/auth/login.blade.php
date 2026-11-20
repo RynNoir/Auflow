@@ -2,7 +2,7 @@
     <div class="flex flex-col gap-6">
         <div class="flex flex-col gap-1">
             <span class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Portal Staf') }}</span>
-            <flux:heading size="xl" level="1" class="text-ink!">{{ __('Masuk ke SIGALON') }}</flux:heading>
+            <flux:heading size="xl" level="1" class="text-ink!">{{ __('Masuk ke Auflow') }}</flux:heading>
             <flux:text class="text-muted!">{{ __('Gunakan email dan kata sandi akun staf Anda.') }}</flux:text>
         </div>
 
@@ -53,7 +53,7 @@
 
         <div class="flex flex-col gap-1 rounded-xl bg-surface-low p-4 text-sm text-muted">
             <p>{{ __('Lupa kata sandi? Hubungi Admin Cabang atau Super Admin untuk mengatur ulang.') }}</p>
-            <p>{{ __('Kurir menggunakan aplikasi Android SIGALON.') }}</p>
+            <p>{{ __('Kurir menggunakan aplikasi Android Auflow.') }}</p>
         </div>
     </div>
 </x-layouts::auth>

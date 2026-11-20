@@ -26,9 +26,9 @@ class PesananCodManualTest extends TestCase
 
         $this->travelTo(CarbonImmutable::parse('2026-11-05 10:00:00'));
         config([
-            'sigalon.harga.walk_in' => 6000,
-            'sigalon.harga.galon_baru' => 45000,
-            'sigalon.harga.cod' => 7000,
+            'auflow.harga.walk_in' => 6000,
+            'auflow.harga.galon_baru' => 45000,
+            'auflow.harga.cod' => 7000,
         ]);
     }
 

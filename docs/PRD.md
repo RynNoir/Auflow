@@ -1,6 +1,6 @@
-# Product Requirements Document (PRD) — SIGALON
+# Product Requirements Document (PRD) — Auflow
 
-**Versi:** 1.2 (25 Okt 2026: diselaraskan dengan Dokumentasi SIGALON v1.1 dan J-01 Sprint Planning 1–4)  
+**Versi:** 1.2 (25 Okt 2026: diselaraskan dengan Dokumentasi Auflow v1.1 dan J-01 Sprint Planning 1–4)  
 **Tanggal acuan:** 25 Oktober 2026  
 **Status:** Draft kerja; keputusan berlabel *Disepakati* sudah diputuskan pemilik proyek, yang berlabel *Terbuka* belum  
 **Proyek formal:** Digitalisasi Proses Transaksi dan Distribusi Air Galon pada CV. Aufa  
@@ -9,13 +9,13 @@
 **Scrum Master:** Reyhan Dwi Saputra · **Product Owner:** Fikri Adiyofa  
 **Mitra:** CV. Aufa · **Narasumber:** Ikhlas Adiyofa (pemilik cabang Dadok Tunggul Hitam) · **Pilot:** 2 cabang · **Target arsitektur:** 13 cabang
 
-> **Aturan dokumen:** PRD ini mengikuti Dokumentasi SIGALON v1.1 (25 Oktober 2026). Bila ada perbedaan, Dokumentasi v1.1 yang berlaku, lalu PRD ini diperbarui. Jangan menganggap hal berlabel *Terbuka* sudah diputuskan.
+> **Aturan dokumen:** PRD ini mengikuti Dokumentasi Auflow v1.1 (25 Oktober 2026). Bila ada perbedaan, Dokumentasi v1.1 yang berlaku, lalu PRD ini diperbarui. Jangan menganggap hal berlabel *Terbuka* sudah diputuskan.
 
 ## 1. Ringkasan produk
 
-SIGALON adalah sistem digital untuk pencatatan transaksi, pemesanan, distribusi air galon isi ulang, penjualan galon kosong baru, pencatatan pengeluaran, dan pelaporan operasional CV. Aufa. Sistem menggantikan buku besar dengan alur digital untuk tiga kanal: walk-in, COD/antar-jemput, dan canvassing.
+Auflow adalah sistem digital untuk pencatatan transaksi, pemesanan, distribusi air galon isi ulang, penjualan galon kosong baru, pencatatan pengeluaran, dan pelaporan operasional CV. Aufa. Sistem menggantikan buku besar dengan alur digital untuk tiga kanal: walk-in, COD/antar-jemput, dan canvassing.
 
-SIGALON terdiri dari:
+Auflow terdiri dari:
 - **Website** (Laravel + Livewire): landing page publik, portal pelanggan, dan halaman staf (Super Admin, Admin Cabang, Kasir).
 - **Aplikasi Android** (Flutter): untuk Kasir dan Kurir, dalam satu aplikasi dengan menu menyesuaikan role.
 

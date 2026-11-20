@@ -59,7 +59,7 @@ class StaffWebAccessTest extends TestCase
         $this->get(route('akses-ditolak'))
             ->assertForbidden()
             ->assertSee('Anda tidak memiliki akses ke halaman ini')
-            ->assertSee('Kurir menggunakan aplikasi Android SIGALON.');
+            ->assertSee('Kurir menggunakan aplikasi Android Auflow.');
     }
 
     public function test_inactive_account_gets_the_generic_message(): void

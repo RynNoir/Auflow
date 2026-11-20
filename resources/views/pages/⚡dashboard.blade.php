@@ -164,7 +164,7 @@ new #[Title('Dasbor')] class extends Component {
                 <span class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Monitoring seluruh cabang') }}</span>
                 <flux:heading size="xl" level="1" class="text-deep!">{{ __('Dasbor Super Admin') }}</flux:heading>
                 <flux:text class="text-muted!">
-                    {{ __('Pendapatan dan transaksi sah (walk-in & COD selesai, canvassing tervalidasi).') }}
+                    {{ __('Pendapatan dan transaksi selesai (walk-in, COD yang sudah diantar dan dibayar, canvassing yang sudah diterima Kasir).') }}
                     <span class="font-medium text-ink" data-test="periode-label">{{ $ringkasan['periodeLabel'] }}</span>
                 </flux:text>
             </div>
@@ -192,8 +192,9 @@ new #[Title('Dasbor')] class extends Component {
                 </div>
                 <div class="flex items-start justify-between gap-3 rounded-2xl bg-white p-5 shadow-card">
                     <div class="flex flex-col gap-1">
-                        <span class="text-sm text-muted">{{ __('Jumlah transaksi sah') }}</span>
+                        <span class="text-sm text-muted">{{ __('Transaksi selesai') }}</span>
                         <span class="text-2xl font-bold text-ink" data-test="total-transaksi">{{ number_format($ringkasan['totalTransaksi'], 0, ',', '.') }}</span>
+                        <span class="text-xs text-muted">{{ __('Pesanan yang masih berjalan atau dibatalkan tidak dihitung') }}</span>
                     </div>
                     <span class="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary"><flux:icon.receipt-percent variant="mini" /></span>
                 </div>
@@ -208,7 +209,7 @@ new #[Title('Dasbor')] class extends Component {
 
             @if ($ringkasan['totalTransaksi'] === 0)
                 <div class="flex flex-col gap-1 rounded-2xl bg-white p-6 text-center shadow-card" data-test="dashboard-empty">
-                    <flux:heading>{{ __('Belum ada transaksi sah pada periode ini') }}</flux:heading>
+                    <flux:heading>{{ __('Belum ada transaksi selesai pada periode ini') }}</flux:heading>
                     <flux:text class="text-muted!">{{ __('Data muncul setelah transaksi walk-in, COD, dan canvassing mulai dicatat dan diselesaikan.') }}</flux:text>
                 </div>
             @endif

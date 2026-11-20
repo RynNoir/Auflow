@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SIGALON') }} — Air Minum Isi Ulang & Pengantaran CV. Aufa</title>
+        <title>{{ config('app.name', 'Auflow') }} — Air Minum Isi Ulang & Pengantaran CV. Aufa</title>
         <meta name="description" content="Layanan resmi distribusi dan pengantaran air minum isi ulang CV. Aufa di Kota Padang. Transparansi harga walk-in dan COD serta lokasi depot cabang.">
 
         <link rel="icon" href="/favicon.ico" sizes="any">
@@ -268,7 +268,7 @@
                             </div>
                         </div>
 
-                        {{-- Kartu Galon Kosong Baru (tampil bila config sigalon.harga.galon_baru terisi; nilai masih sementara, PRD §6) --}}
+                        {{-- Kartu Galon Kosong Baru (tampil bila config auflow.harga.galon_baru terisi; nilai masih sementara, PRD §6) --}}
                         @if($hargaGalonBaru !== null)
                             <div class="flex flex-col justify-between rounded-3xl border border-line bg-surface p-7 shadow-2xs transition hover:shadow-card" data-test="card-galon-baru">
                                 <div>
@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="mt-8 border-t border-line pt-6 text-center text-xs text-muted">
-                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'SIGALON') }} — CV. Aufa. Digitalisasi Distribusi Air Minum Galon. Seluruh hak cipta dilindungi.</p>
+                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'Auflow') }} — CV. Aufa. Digitalisasi Distribusi Air Minum Galon. Seluruh hak cipta dilindungi.</p>
                 </div>
             </div>
         </footer>
@@ -498,7 +498,7 @@
         ></script>
 
         <script>
-            let sigalonMap = null;
+            let auflowMap = null;
             const branchMarkers = {};
 
             document.addEventListener('DOMContentLoaded', function () {
@@ -516,14 +516,14 @@
 
                 // Default pusat Kota Padang
                 const defaultCenter = [-0.9471, 100.4172];
-                sigalonMap = L.map('branch-map', {
+                auflowMap = L.map('branch-map', {
                     scrollWheelZoom: false,
                 }).setView(defaultCenter, 12);
 
                 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
-                }).addTo(sigalonMap);
+                }).addTo(auflowMap);
 
                 if (branches.length > 0) {
                     const boundsGroup = [];
@@ -533,7 +533,7 @@
                         const lng = parseFloat(branch.longitude);
 
                         if (!isNaN(lat) && !isNaN(lng)) {
-                            const marker = L.marker([lat, lng]).addTo(sigalonMap);
+                            const marker = L.marker([lat, lng]).addTo(auflowMap);
 
                             // Nama & alamat diisi lewat textContent agar input data cabang tidak pernah dirender sebagai HTML.
                             const popupContent = document.createElement('div');
@@ -561,7 +561,7 @@
                     });
 
                     if (boundsGroup.length > 0) {
-                        sigalonMap.fitBounds(boundsGroup, {
+                        auflowMap.fitBounds(boundsGroup, {
                             padding: [50, 50],
                             maxZoom: 15
                         });
@@ -570,13 +570,13 @@
             });
 
             function focusBranchMarker(lat, lng, name) {
-                if (!sigalonMap) return;
+                if (!auflowMap) return;
 
                 const latNum = parseFloat(lat);
                 const lngNum = parseFloat(lng);
                 if (isNaN(latNum) || isNaN(lngNum)) return;
 
-                sigalonMap.flyTo([latNum, lngNum], 15, {
+                auflowMap.flyTo([latNum, lngNum], 15, {
                     animate: true,
                     duration: 1.2
                 });

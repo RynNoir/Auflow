@@ -4,7 +4,7 @@
 
 @php
     $defaultPhone = preg_replace('/\D+/', '', (string) config('services.admin_whatsapp_number', '6281200000000'));
-    $resolvedWhatsappUrl = $whatsappUrl ?? ('https://wa.me/'.$defaultPhone.'?text='.rawurlencode('Halo CV. Aufa, saya ingin memesan air galon SIGALON.'));
+    $resolvedWhatsappUrl = $whatsappUrl ?? ('https://wa.me/'.$defaultPhone.'?text='.rawurlencode('Halo CV. Aufa, saya ingin memesan air galon Auflow.'));
 @endphp
 
 <header class="sticky top-0 z-50 w-full border-b border-line bg-white/95 backdrop-blur-sm shadow-xs" id="customer-navbar">

@@ -100,14 +100,14 @@ new #[Title('Transaksi Walk-in & Galon Baru')]
     }
 
     /**
-     * Harga satuan per galon dari konfigurasi resmi (config/sigalon.php).
+     * Harga satuan per galon dari konfigurasi resmi (config/auflow.php).
      */
     #[Computed]
     public function hargaSatuan(): int
     {
         return match ($this->jenis_item) {
-            JenisItem::GalonBaru->value => (int) config('sigalon.harga.galon_baru'),
-            default => (int) config('sigalon.harga.walk_in'),
+            JenisItem::GalonBaru->value => (int) config('auflow.harga.galon_baru'),
+            default => (int) config('auflow.harga.walk_in'),
         };
     }
 
@@ -206,8 +206,8 @@ new #[Title('Transaksi Walk-in & Galon Baru')]
         $jumlah = (int) $validated['jumlah_galon'];
 
         $hargaSatuan = match ($itemEnum) {
-            JenisItem::GalonBaru => (int) config('sigalon.harga.galon_baru'),
-            JenisItem::IsiUlang => (int) config('sigalon.harga.walk_in'),
+            JenisItem::GalonBaru => (int) config('auflow.harga.galon_baru'),
+            JenisItem::IsiUlang => (int) config('auflow.harga.walk_in'),
         };
         $totalHargaServer = $jumlah * $hargaSatuan;
 
@@ -389,7 +389,7 @@ new #[Title('Transaksi Walk-in & Galon Baru')]
                         <div class="mt-2 pt-2 border-t border-line/60 flex items-baseline justify-between">
                             <span class="text-[11px] text-muted">{{ __('Tarif resmi:') }}</span>
                             <span class="text-base font-bold text-primary" data-test="harga-satuan-isi-ulang">
-                                {{ $this->rupiah((int) config('sigalon.harga.walk_in')) }}
+                                {{ $this->rupiah((int) config('auflow.harga.walk_in')) }}
                             </span>
                         </div>
                     </button>
@@ -416,7 +416,7 @@ new #[Title('Transaksi Walk-in & Galon Baru')]
                         <div class="mt-2 pt-2 border-t border-line/60 flex items-baseline justify-between">
                             <span class="text-[11px] text-muted">{{ __('Tarif sementara:') }}</span>
                             <span class="text-base font-bold text-primary" data-test="harga-satuan-galon-baru">
-                                {{ $this->rupiah((int) config('sigalon.harga.galon_baru')) }}
+                                {{ $this->rupiah((int) config('auflow.harga.galon_baru')) }}
                             </span>
                         </div>
                     </button>

@@ -59,11 +59,11 @@ class StafManagementTest extends TestCase
 
         $kasir = User::factory()->kasir()->for($cabang)->create([
             'name' => 'Siti Kasir',
-            'email' => 'siti@sigalon.test',
+            'email' => 'siti@auflow.test',
         ]);
         $kurir = User::factory()->kurir()->for($cabang)->create([
             'name' => 'Budi Kurir',
-            'email' => 'budi@sigalon.test',
+            'email' => 'budi@auflow.test',
         ]);
 
         $response = $this->actingAs($admin)
@@ -73,10 +73,10 @@ class StafManagementTest extends TestCase
         $response->assertSee('Kelola Staf Cabang');
         $response->assertSee('Cabang Tampan');
         $response->assertSee('Siti Kasir');
-        $response->assertSee('siti@sigalon.test');
+        $response->assertSee('siti@auflow.test');
         $response->assertSee('Kasir');
         $response->assertSee('Budi Kurir');
-        $response->assertSee('budi@sigalon.test');
+        $response->assertSee('budi@auflow.test');
         $response->assertSee('Kurir');
     }
 
@@ -147,7 +147,7 @@ class StafManagementTest extends TestCase
         $response = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
                 'name' => 'Kasir Baru',
-                'email' => 'kasir.baru@sigalon.test',
+                'email' => 'kasir.baru@auflow.test',
                 'password' => 'password123',
                 'role' => Role::Kasir->value,
             ]);
@@ -155,7 +155,7 @@ class StafManagementTest extends TestCase
         $response->assertRedirect(route('cabang.staf.index'));
         $response->assertSessionHas('status', __('Akun staf berhasil dibuat.'));
 
-        $created = User::where('email', 'kasir.baru@sigalon.test')->first();
+        $created = User::where('email', 'kasir.baru@auflow.test')->first();
         $this->assertNotNull($created);
         $this->assertSame('Kasir Baru', $created->name);
         $this->assertSame(Role::Kasir, $created->role);
@@ -172,7 +172,7 @@ class StafManagementTest extends TestCase
         $response = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
                 'name' => 'Kurir Baru',
-                'email' => 'kurir.baru@sigalon.test',
+                'email' => 'kurir.baru@auflow.test',
                 'password' => 'password123',
                 'role' => Role::Kurir->value,
             ]);
@@ -180,7 +180,7 @@ class StafManagementTest extends TestCase
         $response->assertRedirect(route('cabang.staf.index'));
         $response->assertSessionHas('status', __('Akun staf berhasil dibuat.'));
 
-        $created = User::where('email', 'kurir.baru@sigalon.test')->first();
+        $created = User::where('email', 'kurir.baru@auflow.test')->first();
         $this->assertNotNull($created);
         $this->assertSame('Kurir Baru', $created->name);
         $this->assertSame(Role::Kurir, $created->role);
@@ -191,7 +191,7 @@ class StafManagementTest extends TestCase
     {
         $cabang = Cabang::factory()->create();
         $admin = User::factory()->adminCabang()->for($cabang)->create();
-        $existing = User::factory()->kasir()->for($cabang)->create(['email' => 'ada@sigalon.test']);
+        $existing = User::factory()->kasir()->for($cabang)->create(['email' => 'ada@auflow.test']);
 
         $response = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
@@ -206,7 +206,7 @@ class StafManagementTest extends TestCase
         $responseDup = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
                 'name' => 'Staf Baru',
-                'email' => 'ada@sigalon.test',
+                'email' => 'ada@auflow.test',
                 'password' => 'password123',
                 'role' => Role::Kasir->value,
             ]);
@@ -222,7 +222,7 @@ class StafManagementTest extends TestCase
         $response1 = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
                 'name' => 'Impostor Super',
-                'email' => 'impostor1@sigalon.test',
+                'email' => 'impostor1@auflow.test',
                 'password' => 'password123',
                 'role' => Role::SuperAdmin->value,
             ]);
@@ -232,15 +232,15 @@ class StafManagementTest extends TestCase
         $response2 = $this->actingAs($admin)
             ->post(route('cabang.staf.store'), [
                 'name' => 'Impostor Admin',
-                'email' => 'impostor2@sigalon.test',
+                'email' => 'impostor2@auflow.test',
                 'password' => 'password123',
                 'role' => Role::AdminCabang->value,
             ]);
 
         $response2->assertSessionHasErrors(['role']);
 
-        $this->assertDatabaseMissing('users', ['email' => 'impostor1@sigalon.test']);
-        $this->assertDatabaseMissing('users', ['email' => 'impostor2@sigalon.test']);
+        $this->assertDatabaseMissing('users', ['email' => 'impostor1@auflow.test']);
+        $this->assertDatabaseMissing('users', ['email' => 'impostor2@auflow.test']);
     }
 
     public function test_admin_cabang_can_view_edit_form_for_own_branch_staf(): void
@@ -249,7 +249,7 @@ class StafManagementTest extends TestCase
         $admin = User::factory()->adminCabang()->for($cabang)->create();
         $kasir = User::factory()->kasir()->for($cabang)->create([
             'name' => 'Kasir Edit',
-            'email' => 'kasiredit@sigalon.test',
+            'email' => 'kasiredit@auflow.test',
         ]);
 
         $response = $this->actingAs($admin)
@@ -258,7 +258,7 @@ class StafManagementTest extends TestCase
         $response->assertOk();
         $response->assertSee('Ubah Staf Cabang');
         $response->assertSee('Kasir Edit');
-        $response->assertSee('kasiredit@sigalon.test');
+        $response->assertSee('kasiredit@auflow.test');
     }
 
     public function test_admin_cabang_cannot_view_edit_form_for_staf_from_other_branch(): void
@@ -296,13 +296,13 @@ class StafManagementTest extends TestCase
         $admin = User::factory()->adminCabang()->for($cabang)->create();
         $staf = User::factory()->kasir()->for($cabang)->create([
             'name' => 'Nama Lama',
-            'email' => 'lama@sigalon.test',
+            'email' => 'lama@auflow.test',
         ]);
 
         $response = $this->actingAs($admin)
             ->put(route('cabang.staf.update', $staf), [
                 'name' => 'Nama Baru',
-                'email' => 'baru@sigalon.test',
+                'email' => 'baru@auflow.test',
                 'role' => Role::Kurir->value,
             ]);
 
@@ -311,7 +311,7 @@ class StafManagementTest extends TestCase
 
         $staf->refresh();
         $this->assertSame('Nama Baru', $staf->name);
-        $this->assertSame('baru@sigalon.test', $staf->email);
+        $this->assertSame('baru@auflow.test', $staf->email);
         $this->assertSame(Role::Kurir, $staf->role);
         $this->assertSame($cabang->id, $staf->cabang_id);
     }
@@ -329,7 +329,7 @@ class StafManagementTest extends TestCase
         $this->actingAs($adminA)
             ->put(route('cabang.staf.update', $stafB), [
                 'name' => 'Nama Hacked',
-                'email' => 'hacked@sigalon.test',
+                'email' => 'hacked@auflow.test',
                 'role' => Role::Kasir->value,
             ])
             ->assertForbidden();

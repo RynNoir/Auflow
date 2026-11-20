@@ -6,7 +6,7 @@
                 <span class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Master Data') }}</span>
                 <flux:heading size="xl" level="1" class="text-deep!">{{ __('Kelola Cabang') }}</flux:heading>
                 <flux:text class="text-muted!">
-                    {{ __('Daftar seluruh cabang SIGALON beserta koordinat lokasi dan status operasional.') }}
+                    {{ __('Daftar seluruh cabang Auflow beserta koordinat lokasi dan status operasional.') }}
                 </flux:text>
             </div>
 
