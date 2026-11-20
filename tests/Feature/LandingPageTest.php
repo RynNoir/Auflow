@@ -20,14 +20,14 @@ class LandingPageTest extends TestCase
 
         $response->assertOk();
         $response->assertViewIs('welcome');
-        $response->assertSee('SIGALON');
+        $response->assertSee('Auflow');
         $response->assertSee('Depot Air Minum CV. Aufa');
     }
 
     public function test_landing_page_displays_official_prices(): void
     {
-        config(['sigalon.harga.walk_in' => 6000]);
-        config(['sigalon.harga.cod' => 7000]);
+        config(['auflow.harga.walk_in' => 6000]);
+        config(['auflow.harga.cod' => 7000]);
 
         $response = $this->get(route('home'));
 
@@ -40,7 +40,7 @@ class LandingPageTest extends TestCase
 
     public function test_landing_page_hides_galon_baru_card_when_unconfigured(): void
     {
-        config(['sigalon.harga.galon_baru' => null]);
+        config(['auflow.harga.galon_baru' => null]);
 
         $response = $this->get(route('home'));
 
@@ -50,7 +50,7 @@ class LandingPageTest extends TestCase
 
     public function test_landing_page_shows_galon_baru_card_when_configured(): void
     {
-        config(['sigalon.harga.galon_baru' => 45000]);
+        config(['auflow.harga.galon_baru' => 45000]);
 
         $response = $this->get(route('home'));
 
@@ -255,7 +255,7 @@ class LandingPageTest extends TestCase
     {
         $view = $this->blade('<x-customer-navbar />');
 
-        $view->assertSee('SIGALON');
+        $view->assertSee('Auflow');
         $view->assertSee('data-nav-section="hero"', false);
         $view->assertSee('data-nav-section="lokasi-cabang"', false);
     }

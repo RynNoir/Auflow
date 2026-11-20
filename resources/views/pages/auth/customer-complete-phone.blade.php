@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
-        <title>{{ __('Lengkapi Nomor WhatsApp') }} - {{ config('app.name', 'SIGALON') }}</title>
+        <title>{{ __('Lengkapi Nomor WhatsApp') }} - {{ config('app.name', 'Auflow') }}</title>
     </head>
     <body class="min-h-screen bg-surface font-sans text-ink antialiased">
         <div class="flex min-h-screen flex-col justify-between">
@@ -90,7 +90,7 @@
             </main>
 
             <footer class="w-full border-t border-line bg-white py-4 text-center text-xs text-muted">
-                &copy; {{ date('Y') }} {{ config('app.name', 'SIGALON') }} &middot; CV. Aufa
+                &copy; {{ date('Y') }} {{ config('app.name', 'Auflow') }} &middot; CV. Aufa
             </footer>
         </div>
 

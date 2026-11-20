@@ -30,7 +30,7 @@ class CustomerAuthController extends Controller
         }
 
         $adminWhatsapp = (string) config('services.admin_whatsapp_number', '6281200000000');
-        $helpMessage = 'Halo Admin SIGALON, saya butuh bantuan terkait kata sandi akun pelanggan saya.';
+        $helpMessage = 'Halo Admin Auflow, saya butuh bantuan terkait kata sandi akun pelanggan saya.';
         $whatsappUrl = 'https://wa.me/'.$adminWhatsapp.'?text='.rawurlencode($helpMessage);
 
         return view('pages.auth.customer-login', [
@@ -109,7 +109,7 @@ class CustomerAuthController extends Controller
         Auth::guard('pelanggan')->login($pelanggan);
         $request->session()->regenerate();
 
-        return redirect()->route('home')->with('status', __('Pendaftaran berhasil. Selamat datang di SIGALON!'));
+        return redirect()->route('home')->with('status', __('Pendaftaran berhasil. Selamat datang di Auflow!'));
     }
 
     /**

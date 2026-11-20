@@ -23,7 +23,7 @@ class SuperAdminDashboardTest extends TestCase
 
         // Tanggal tetap di tengah bulan agar "hari ini" dan "bulan ini" tidak bergantung pada tanggal tes dijalankan.
         $this->travelTo(CarbonImmutable::parse('2026-10-20 10:00:00'));
-        config(['sigalon.harga.walk_in' => 6000, 'sigalon.harga.cod' => 7000]);
+        config(['auflow.harga.walk_in' => 6000, 'auflow.harga.cod' => 7000]);
     }
 
     public function test_super_admin_sees_totals_per_channel_and_per_branch_for_today(): void
@@ -119,7 +119,7 @@ class SuperAdminDashboardTest extends TestCase
         $this->actingAs(User::factory()->superAdmin()->create())
             ->get(route('dashboard'))
             ->assertOk()
-            ->assertSee('Belum ada transaksi sah pada periode ini')
+            ->assertSee('Belum ada transaksi selesai pada periode ini')
             ->assertSee('Rp0');
     }
 

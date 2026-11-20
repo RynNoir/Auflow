@@ -1,4 +1,4 @@
-# CLAUDE.md — Panduan AI Coding SIGALON
+# CLAUDE.md — Panduan AI Coding Auflow
 
 Baca file ini sebelum melakukan perubahan kode.
 
@@ -53,7 +53,7 @@ Jika dua sumber bertentangan, jangan diam-diam memilih. Jelaskan konflik dan min
 - Jika tes tidak bisa dijalankan, jelaskan alasannya.
 - Untuk data pelanggan, kumpulkan seminimal mungkin dan jangan bocorkan data ke log.
 - Jangan mengimplementasikan peminjaman galon atau WhatsApp API otomatis; fitur tersebut di luar scope terbaru.
-- Semua harga ada di satu file konfigurasi `config/sigalon.php` (bukan tabel, bukan menu). Galon kosong baru hanya dijual melalui walk-in dan nominalnya masih nilai sementara. Satu transaksi berisi satu jenis item.
+- Semua harga ada di satu file konfigurasi `config/auflow.php` (bukan tabel, bukan menu). Galon kosong baru hanya dijual melalui walk-in dan nominalnya masih nilai sementara. Satu transaksi berisi satu jenis item.
 - Akun staf ada di tabel `users` (guard `web`, role `super_admin`/`admin_cabang`/`kasir`/`kurir`). Akun pelanggan ada di tabel `pelanggan` (guard `pelanggan`, model `App\Models\Pelanggan`). Jangan mencampur keduanya.
 
 ## 6. Design/UX
@@ -92,7 +92,7 @@ Jangan membuat commit. Tunggu pengguna melakukannya secara manual.
 
 # Deployment
 
-- Hosting dan domain produksi SIGALON ditunda (PRD §5, §9). Jangan menyiapkan deployment, layanan cloud, atau layanan berbayar apa pun tanpa persetujuan Product Owner.
+- Hosting dan domain produksi Auflow ditunda (PRD §5, §9). Jangan menyiapkan deployment, layanan cloud, atau layanan berbayar apa pun tanpa persetujuan Product Owner.
 
 === foundation rules ===
 

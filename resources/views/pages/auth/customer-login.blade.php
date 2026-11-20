@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
-        <title>{{ __('Masuk / Daftar Pelanggan') }} - {{ config('app.name', 'SIGALON') }}</title>
+        <title>{{ __('Masuk / Daftar Pelanggan') }} - {{ config('app.name', 'Auflow') }}</title>
     </head>
     <body class="min-h-screen bg-surface font-sans text-ink antialiased">
         <div class="flex min-h-screen flex-col justify-between">
@@ -54,7 +54,7 @@
                             </div>
 
                             <div class="flex flex-col gap-3.5">
-                                <p class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Kemudahan Akun SIGALON') }}</p>
+                                <p class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Kemudahan Akun Auflow') }}</p>
 
                                 <div class="flex items-start gap-3">
                                     <div class="flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary font-bold text-xs">
@@ -100,7 +100,7 @@
                     <div class="flex w-full flex-col justify-center p-6 md:w-7/12 md:p-10">
                         <div class="flex flex-col gap-1 mb-6">
                             <span class="text-xs font-semibold uppercase tracking-wider text-primary">{{ __('Portal Pelanggan Resmi') }}</span>
-                            <flux:heading size="xl" level="1" class="text-ink!">{{ __('Selamat Datang di SIGALON') }}</flux:heading>
+                            <flux:heading size="xl" level="1" class="text-ink!">{{ __('Selamat Datang di Auflow') }}</flux:heading>
                             <flux:text class="text-muted!">{{ __('Akses pemesanan air minum isi ulang CV. Aufa.') }}</flux:text>
                         </div>
 
@@ -199,7 +199,7 @@
                                     data-test="customer-login-submit"
                                     x-bind:disabled="submitting"
                                 >
-                                    <span x-show="! submitting">{{ __('Masuk ke Akun SIGALON') }} &rarr;</span>
+                                    <span x-show="! submitting">{{ __('Masuk ke Akun Auflow') }} &rarr;</span>
                                     <span x-show="submitting" x-cloak>{{ __('Memproses…') }}</span>
                                 </flux:button>
                             </form>
@@ -292,7 +292,7 @@
             </main>
 
             <footer class="w-full border-t border-line bg-white py-4 text-center text-xs text-muted">
-                &copy; {{ date('Y') }} {{ config('app.name', 'SIGALON') }} &middot; CV. Aufa
+                &copy; {{ date('Y') }} {{ config('app.name', 'Auflow') }} &middot; CV. Aufa
             </footer>
         </div>
 

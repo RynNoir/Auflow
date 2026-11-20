@@ -39,7 +39,7 @@
                     :value="old('email')"
                     type="email"
                     required
-                    placeholder="admin.cabang@sigalon.id"
+                    placeholder="admin.cabang@auflow.id"
                     data-test="input-email-admin"
                 />
 

@@ -18,7 +18,7 @@
                     <x-app-logo-icon class="size-5" />
                 </div>
                 <div class="grid leading-tight">
-                    <span class="text-base font-bold text-deep tracking-tight">SIGALON</span>
+                    <span class="text-base font-bold text-deep tracking-tight">Auflow</span>
                     <span class="text-[10px] font-medium text-muted">CV. AUFA</span>
                 </div>
             </div>

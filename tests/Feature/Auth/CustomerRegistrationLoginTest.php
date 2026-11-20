@@ -28,7 +28,7 @@ class CustomerRegistrationLoginTest extends TestCase
 
         $response->assertSessionHasNoErrors()
             ->assertRedirect(route('home'))
-            ->assertSessionHas('status', 'Pendaftaran berhasil. Selamat datang di SIGALON!');
+            ->assertSessionHas('status', 'Pendaftaran berhasil. Selamat datang di Auflow!');
 
         $pelanggan = Pelanggan::where('no_hp', '6281298765432')->firstOrFail();
         $this->assertSame('Siti Nurhaliza', $pelanggan->nama);

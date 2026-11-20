@@ -12,7 +12,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Default: walk-in isi ulang yang sudah selesai hari ini, harga dari config/sigalon.php.
+ * Default: walk-in isi ulang yang sudah selesai hari ini, harga dari config/auflow.php.
  *
  * @extends Factory<Transaksi>
  */
@@ -89,9 +89,9 @@ class TransaksiFactory extends Factory
         $item = $attributes['jenis_item'] instanceof JenisItem ? $attributes['jenis_item'] : JenisItem::from($attributes['jenis_item']);
 
         return match (true) {
-            $item === JenisItem::GalonBaru => (int) config('sigalon.harga.galon_baru'),
-            $kanal === Kanal::WalkIn => (int) config('sigalon.harga.walk_in'),
-            default => (int) config('sigalon.harga.cod'),
+            $item === JenisItem::GalonBaru => (int) config('auflow.harga.galon_baru'),
+            $kanal === Kanal::WalkIn => (int) config('auflow.harga.walk_in'),
+            default => (int) config('auflow.harga.cod'),
         };
     }
 }

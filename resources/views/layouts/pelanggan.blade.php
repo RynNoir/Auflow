@@ -4,7 +4,7 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-surface font-sans text-ink antialiased selection:bg-primary-soft selection:text-primary flex flex-col justify-between">
-        {{-- Navbar Pelanggan Resmi SIGALON --}}
+        {{-- Navbar Pelanggan Resmi Auflow --}}
         <x-customer-navbar />
 
         <main class="flex-1">
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="mt-8 border-t border-line pt-6 text-center text-xs text-muted">
-                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'SIGALON') }} — CV. Aufa. Digitalisasi Distribusi Air Minum Galon. Seluruh hak cipta dilindungi.</p>
+                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'Auflow') }} — CV. Aufa. Digitalisasi Distribusi Air Minum Galon. Seluruh hak cipta dilindungi.</p>
                 </div>
             </div>
         </footer>

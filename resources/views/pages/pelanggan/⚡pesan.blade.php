@@ -117,7 +117,7 @@ class extends Component {
     #[Computed]
     public function hargaSatuan(): int
     {
-        return (int) config('sigalon.harga.cod', 7000);
+        return (int) config('auflow.harga.cod', 7000);
     }
 
     /**

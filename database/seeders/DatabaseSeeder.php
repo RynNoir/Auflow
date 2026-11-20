@@ -36,13 +36,13 @@ class DatabaseSeeder extends Seeder
         $cabang = Cabang::query()->orderBy('id')->first();
 
         $akun = [
-            ['email' => (string) (config('sigalon.seed.superadmin_email') ?: 'superadmin@sigalon.test'), 'name' => 'Super Admin (dev)', 'role' => Role::SuperAdmin, 'cabang_id' => null],
-            ['email' => 'admin.cabang@sigalon.test', 'name' => 'Admin Cabang (dev)', 'role' => Role::AdminCabang, 'cabang_id' => $cabang?->id],
-            ['email' => 'kasir@sigalon.test', 'name' => 'Kasir (dev)', 'role' => Role::Kasir, 'cabang_id' => $cabang?->id],
-            ['email' => 'kurir@sigalon.test', 'name' => 'Kurir (dev)', 'role' => Role::Kurir, 'cabang_id' => $cabang?->id],
+            ['email' => (string) (config('auflow.seed.superadmin_email') ?: 'superadmin@auflow.test'), 'name' => 'Super Admin (dev)', 'role' => Role::SuperAdmin, 'cabang_id' => null],
+            ['email' => 'admin.cabang@auflow.test', 'name' => 'Admin Cabang (dev)', 'role' => Role::AdminCabang, 'cabang_id' => $cabang?->id],
+            ['email' => 'kasir@auflow.test', 'name' => 'Kasir (dev)', 'role' => Role::Kasir, 'cabang_id' => $cabang?->id],
+            ['email' => 'kurir@auflow.test', 'name' => 'Kurir (dev)', 'role' => Role::Kurir, 'cabang_id' => $cabang?->id],
         ];
 
-        $password = config('sigalon.seed.default_password');
+        $password = config('auflow.seed.default_password');
         $generated = blank($password);
 
         if ($generated) {

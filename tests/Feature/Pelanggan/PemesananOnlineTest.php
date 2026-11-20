@@ -92,7 +92,7 @@ class PemesananOnlineTest extends TestCase
     {
         $pelanggan = $this->pelangganDenganHp();
         $cabang = $this->cabangAktif();
-        $hargaSatuan = (int) config('sigalon.harga.cod', 7000);
+        $hargaSatuan = (int) config('auflow.harga.cod', 7000);
 
         Livewire::actingAs($pelanggan, 'pelanggan')
             ->test('pages::pelanggan.pesan')
@@ -243,7 +243,7 @@ class PemesananOnlineTest extends TestCase
     {
         $pelanggan = $this->pelangganDenganHp();
         $cabang = $this->cabangAktif();
-        $hargaSatuan = (int) config('sigalon.harga.cod', 7000);
+        $hargaSatuan = (int) config('auflow.harga.cod', 7000);
 
         Livewire::actingAs($pelanggan, 'pelanggan')
             ->test('pages::pelanggan.pesan')

@@ -45,7 +45,7 @@
                     :value="old('email')"
                     type="email"
                     required
-                    placeholder="rian.kasir@sigalon.id"
+                    placeholder="rian.kasir@auflow.id"
                     data-test="input-email-staf"
                 />
 

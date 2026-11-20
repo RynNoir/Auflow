@@ -7,7 +7,7 @@
         </div>
 
         <ul class="flex flex-col gap-1 rounded-xl bg-surface-low p-4 text-sm text-muted">
-            <li>{{ __('Kurir menggunakan aplikasi Android SIGALON.') }}</li>
+            <li>{{ __('Kurir menggunakan aplikasi Android Auflow.') }}</li>
             <li>{{ __('Pelanggan masuk dan memesan lewat halaman pelanggan.') }}</li>
         </ul>
 

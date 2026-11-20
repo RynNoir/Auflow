@@ -16,7 +16,7 @@ return [
     */
 
     'seed' => [
-        'superadmin_email' => env('SEED_SUPERADMIN_EMAIL', 'superadmin@sigalon.test'),
+        'superadmin_email' => env('SEED_SUPERADMIN_EMAIL', 'superadmin@auflow.test'),
         'default_password' => env('SEED_DEFAULT_PASSWORD', env('SEED_SUPERADMIN_PASSWORD')),
     ],
 

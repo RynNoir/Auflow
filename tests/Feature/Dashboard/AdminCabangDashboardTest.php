@@ -21,7 +21,7 @@ class AdminCabangDashboardTest extends TestCase
         parent::setUp();
 
         $this->travelTo(CarbonImmutable::parse('2026-10-20 10:00:00'));
-        config(['sigalon.harga.walk_in' => 6000, 'sigalon.harga.cod' => 7000]);
+        config(['auflow.harga.walk_in' => 6000, 'auflow.harga.cod' => 7000]);
     }
 
     // ─── Dashboard /dashboard ─────────────────────────────────────────────
@@ -332,7 +332,7 @@ class AdminCabangDashboardTest extends TestCase
         $this->actingAs($admin)
             ->get(route('dashboard.cabang', $cabang))
             ->assertOk()
-            ->assertSee('Belum ada transaksi sah pada periode ini')
+            ->assertSee('Belum ada transaksi selesai pada periode ini')
             ->assertSee('Rp0');
     }
 

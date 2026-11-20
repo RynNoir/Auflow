@@ -188,7 +188,7 @@ new #[Title('Dasbor Cabang')] class extends Component {
                 {{ __('Ringkasan cabang Anda') }} — {{ $ringkasan['cabangNama'] }}
             </flux:heading>
             <flux:text class="text-muted text-sm">
-                {{ __('Ringkasan transaksi sah dan antrean pesanan cabang per') }}
+                {{ __('Ringkasan transaksi selesai dan antrean pesanan cabang per') }}
                 <span class="font-semibold text-ink" data-test="periode-label">{{ $ringkasan['periodeLabel'] }}</span>
             </flux:text>
         </div>
@@ -206,12 +206,12 @@ new #[Title('Dasbor Cabang')] class extends Component {
 
     <div class="flex flex-col gap-6" wire:loading.class="opacity-50" wire:target="periode">
         <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {{-- Jumlah transaksi sah --}}
+            {{-- Transaksi selesai (masuk pendapatan) --}}
             <div class="flex items-start justify-between gap-3 rounded-2xl bg-white p-5 shadow-card border border-line/60">
                 <div class="flex flex-col gap-1">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-muted">{{ __('Jumlah transaksi sah') }}</span>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-muted">{{ __('Transaksi selesai') }}</span>
                     <span class="text-2xl font-bold text-ink" data-test="total-transaksi">{{ number_format($ringkasan['totalTransaksi'], 0, ',', '.') }}</span>
-                    <span class="text-xs text-muted">{{ __('Walk-in, COD selesai, dan canvassing tervalidasi') }}</span>
+                    <span class="text-xs text-muted">{{ __('Walk-in, COD yang sudah diantar dan dibayar, canvassing yang sudah diterima Kasir. Pesanan yang masih berjalan atau dibatalkan tidak dihitung.') }}</span>
                 </div>
                 <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary shadow-xs">
                     <flux:icon.receipt-percent variant="mini" class="size-5" />
@@ -223,7 +223,7 @@ new #[Title('Dasbor Cabang')] class extends Component {
                 <div class="flex flex-col gap-1">
                     <span class="text-xs font-semibold uppercase tracking-wider text-muted">{{ __('Total pendapatan') }}</span>
                     <span class="text-2xl font-bold text-primary" data-test="total-pendapatan">{{ $this->rupiah($ringkasan['totalPendapatan']) }}</span>
-                    <span class="text-xs text-muted">{{ __('Dari transaksi sah pada periode ini') }}</span>
+                    <span class="text-xs text-muted">{{ __('Dari transaksi selesai pada periode ini') }}</span>
                 </div>
                 <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary shadow-xs">
                     <flux:icon.banknotes variant="mini" class="size-5" />
@@ -252,7 +252,7 @@ new #[Title('Dasbor Cabang')] class extends Component {
 
         @if ($ringkasan['totalTransaksi'] === 0)
             <div class="flex flex-col gap-1 rounded-2xl bg-white p-6 text-center shadow-card border border-line/60" data-test="dashboard-cabang-empty">
-                <flux:heading>{{ __('Belum ada transaksi sah pada periode ini') }}</flux:heading>
+                <flux:heading>{{ __('Belum ada transaksi selesai pada periode ini') }}</flux:heading>
                 <flux:text class="text-muted!">{{ __('Data muncul setelah transaksi walk-in, COD, dan canvassing mulai dicatat dan diselesaikan.') }}</flux:text>
             </div>
         @endif
