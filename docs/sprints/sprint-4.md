@@ -16,7 +16,7 @@ Menyediakan aplikasi Android bagi kasir dan kurir CV. Aufa agar transaksi, statu
 | US-24 | Kasir mencatat transaksi walk-in & galon baru di aplikasi | Form item (isi ulang/galon baru), jumlah, metode bayar; tanpa data pelanggan; total dari backend; transaksi tampil di dashboard web cabang | Must | 3 | Shalwa |
 | US-25 | Kasir mencatat pesanan COD manual di aplikasi | Form nama pemesan, no HP, alamat, jumlah galon, metode bayar; status awal "diproses"; pesanan tampil di web | Must | 3 | Nurul |
 | US-26 | Kurir melihat daftar tugas pengiriman | Kurir hanya melihat tugas yang ditugaskan kepadanya; tampil alamat, jumlah galon, metode bayar, dan status (teks + badge) | Must | 3 | Fikri |
-| US-27 | Kurir memperbarui status & mengonfirmasi pembayaran | Status berubah berurutan: diproses, dijemput, diantar, selesai; saat selesai kurir mengonfirmasi pembayaran tunai atau bukti bayar QR; perubahan tercatat di RIWAYAT_STATUS dan terlihat di web & linimasa pelanggan | Must | 3 | Shalwa |
+| US-27 | Kurir memperbarui status & mengonfirmasi pembayaran | Status berubah berurutan: diproses, dijemput, diantar, selesai; saat selesai kurir mengonfirmasi pembayaran tunai atau bukti bayar QR; perubahan tercatat di RIWAYAT_STATUS dan terlihat di web & linimasa pelanggan; **(tambahan keputusan PO 20 Nov 2026)** Admin Cabang memantau kurir cabangnya di web: status kurir (sedang bertugas/bebas), tugas aktif, aktivitas terakhir, dan peringatan untuk pesanan yang berstatus Diantar lebih dari 60 menit | Must | 3 | Shalwa |
 | US-28 | Kurir mencatat & memperbaiki penjualan canvassing | Form jumlah galon & metode bayar (tunai/QR, gambar QR ditampilkan); tanpa data pelanggan; tersimpan "menunggu_verifikasi"; catatan yang ditolak dapat diperbaiki lalu kembali "menunggu_verifikasi" | Must | 3 | Velisa |
 | US-32 | Kasir memverifikasi canvassing & menugaskan kurir di aplikasi | Kasir dapat menerima/menolak (dengan alasan) catatan canvassing dan memilih kurir aktif untuk pesanan COD dari aplikasi; hasil sama dengan versi web | Should | 2 | Reyhan |
 | US-29 | Uji integrasi web dan mobile | Data dari aplikasi muncul di dashboard, linimasa & laporan web; skenario prioritas Dokumentasi v1.1 lulus; UAT bersama cabang pilot; bug tercatat dan diperbaiki | Should | 2 | Reyhan |
@@ -79,6 +79,7 @@ Diperbarui 25 Oktober 2026 dari hasil Sprint 1.
 - **Status dan transisi** mengikuti enum `StatusTransaksi` dan service transisi dari US-12. Jangan menulis aturan transisi kedua di endpoint.
 - **Harga** dihitung di backend dari `config/sigalon.php`. Aplikasi hanya mengirim jenis item, jumlah, dan metode bayar (AC US-24: total dari backend).
 - **Batas cabang:** setiap endpoint harus memakai `cabang_id` milik akun yang login, bukan nilai yang dikirim aplikasi.
+- **US-27 (ditambahkan 20 Nov 2026):** PO menyisipkan pantauan harian kurir untuk Admin Cabang ke AC US-27 (rekap per periode ada di US-20). Aktivitas terakhir dan lama status Diantar dibaca dari `riwayat_status`; batas peringatan 60 menit sebaiknya disimpan di `config/auflow.php`, bukan ditulis langsung di kode. Jam penugasan kurir belum tercatat di `riwayat_status` (ERD hanya untuk perubahan status), jadi durasi dihitung mulai dari status Dijemput. Story point belum diubah; tinjau ulang SP dan tambahkan task-nya di Sprint Planning.
 
 ## Definition of Done
 Mengikuti PRD v1.2 §14.
