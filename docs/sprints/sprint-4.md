@@ -35,8 +35,8 @@ Menyediakan aplikasi Android bagi kasir dan kurir CV. Aufa agar transaksi, statu
 | 6 | US-25 | Integrasi form COD ke endpoint & tampilkan hasil/error | 2 | Reyhan | To Do |
 | 7 | US-26 | Endpoint API daftar tugas pengiriman milik kurir login (Laravel) | 3 | Fikri | To Do |
 | 8 | US-26 | Buat UI daftar tugas dengan label status teks + badge | 3 | Velisa | To Do |
-| 9 | US-27 | Endpoint API ubah status berurutan + simpan RIWAYAT_STATUS + kirim notifikasi | 2 | Shalwa | To Do |
-| 10 | US-27 | Tombol update status + konfirmasi pembayaran tunai/QR saat selesai + penanganan error | 3 | Shalwa | To Do |
+| 9 | US-27 | API ubah status berurutan, RIWAYAT_STATUS, dan notifikasi | 2 | Shalwa | To Do |
+| 10 | US-27 | Tombol status, konfirmasi bayar, dan halaman pantau kurir | 5 | Shalwa | To Do |
 | 11 | US-28 | Buat UI form canvassing (jumlah, metode bayar, tampilan gambar QR) | 2 | Nurul | To Do |
 | 12 | US-28 | Integrasi canvassing + daftar catatan ditolak & form perbaikan | 3 | Velisa | To Do |
 | 13 | US-32 | Endpoint API verifikasi canvassing & penugasan kurir untuk kasir | 2 | Fikri | To Do |
@@ -44,7 +44,7 @@ Menyediakan aplikasi Android bagi kasir dan kurir CV. Aufa agar transaksi, statu
 | 15 | US-29 | Susun & jalankan skenario uji end-to-end (aplikasi → dashboard, linimasa, laporan web) | 3 | Reyhan | To Do |
 | 16 | US-29 | UAT bersama cabang pilot & perbaikan bug hasil uji | 3 | Fikri | To Do |
 
-**Total estimasi:** 43 jam
+**Total estimasi:** 45 jam
 
 ## D. Kesepakatan tambahan sprint ini
 

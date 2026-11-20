@@ -34,10 +34,10 @@ Melengkapi verifikasi canvassing, pencatatan pengeluaran, laporan otomatis, dan 
 | 6 | US-16 | Feature test verifikasi canvassing & isolasi cabang | 2 | Fikri | To Do |
 | 7 | US-19 | Buat form tambah/edit pengeluaran (kategori, jumlah, tanggal, keterangan) | 3 | Reyhan | To Do |
 | 8 | US-19 | Daftar pengeluaran + hapus + filter per bulan | 3 | Shalwa | To Do |
-| 9 | US-20 | Desain UI halaman laporan (pilihan periode harian/mingguan/bulanan) | 3 | Nurul | To Do |
-| 10 | US-20 | Query agregasi pendapatan per periode & per kanal (tanpa pesanan dibatalkan/ditolak) | 4 | Fikri | To Do |
-| 11 | US-20 | Hitung total pengeluaran & selisih pada laporan | 3 | Velisa | To Do |
-| 12 | US-20 | Tampilan laporan gabungan 2 cabang untuk Super Admin | 3 | Reyhan | To Do |
+| 9 | US-20 | Desain UI laporan per periode dan rekap kurir | 3 | Nurul | To Do |
+| 10 | US-20 | Query pendapatan per periode dan per kanal (hanya transaksi selesai) | 4 | Fikri | To Do |
+| 11 | US-20 | Hitung pengeluaran, selisih, dan rekap kinerja kurir | 4 | Velisa | To Do |
+| 12 | US-20 | Laporan gabungan dan per cabang untuk Super Admin | 3 | Reyhan | To Do |
 | 13 | US-21 | Fitur reset password sementara oleh Kasir/Admin Cabang | 2 | Velisa | To Do |
 | 14 | US-21 | Halaman ubah password pelanggan + wajib ganti password sementara | 2 | Nurul | To Do |
 | 15 | US-21 | Tautan wa.me ke cabang di halaman lupa password & detail pesanan | 1 | Reyhan | To Do |
@@ -47,7 +47,7 @@ Melengkapi verifikasi canvassing, pencatatan pengeluaran, laporan otomatis, dan 
 | 19 | US-30 | Setup notifikasi Laravel & kirim pada event pesanan baru, penugasan, status, pembatalan | 3 | Reyhan | To Do |
 | 20 | US-30 | Ikon & daftar notifikasi di website (staf dan pelanggan) | 2 | Velisa | To Do |
 
-**Total estimasi:** 53 jam
+**Total estimasi:** 54 jam
 
 ## D. Kesepakatan tambahan sprint ini
 
