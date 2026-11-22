@@ -86,7 +86,7 @@ Bagian ini bukan isi J-01.
 Diperbarui 25 Oktober 2026 dari hasil Sprint 1. Periksa juga catatan di `sprint-2.md`, karena Sprint 3 memakai hasilnya.
 
 - **US-13:** label status untuk linimasa pelanggan ada di `StatusTransaksi::label()`. Route pelanggan wajib memakai middleware `auth:pelanggan`, dan pelanggan hanya boleh melihat transaksi dengan `pelanggan_id` miliknya (uji akses ke pesanan pelanggan lain).
-- **US-16:** status canvassing `menunggu_verifikasi` → `tervalidasi` atau `ditolak`; `diverifikasi_oleh` diisi Kasir yang memverifikasi.
+- **US-16:** status canvassing `menunggu_verifikasi` → `tervalidasi` atau `ditolak`; `diverifikasi_oleh` diisi Kasir yang memverifikasi. Layanan verifikasi tersedia di `App\Services\VerifikasiCanvassingService`. Status `tervalidasi` adalah status yang dihitung di laporan (PRD §6).
 - **US-20:** pakai `Transaksi::ringkasanPerCabangDanKanal($dari, $sampai, $cabangId)` dan scope `sah()` dari US-04. Aturan hitungnya sudah diuji di `tests/Feature/Dashboard/SuperAdminDashboardTest.php`. Grafik masih butuh keputusan library (PRD §16 no. 5); dasbor US-04 memakai batang Tailwind.
 - **US-20 (ditambahkan 20 Nov 2026):** PO menyisipkan rekap kinerja kurir per periode ke AC US-20 (bagian dari fitur pantau kurir; pantauan harian ada di US-27, Sprint 4). Data dari `transaksi` kanal COD: `kurir_id`, status `selesai`/`dibatalkan`, `jumlah_galon`, dan `total_harga` bermetode tunai. Story point belum diubah; tinjau ulang SP dan tambahkan task-nya di Sprint Planning/Review.
 - **US-21:** password pelanggan ada di `pelanggan.password` (cast `hashed`). Penanda "wajib ganti password" belum ada di ERD dan perlu disepakati.
@@ -110,3 +110,33 @@ Tambahkan catatan dengan format:
 - **Reviewer:**
 - **Status yang diusulkan:**
 - **Saran pesan commit (tidak dijalankan):**
+
+### [US-16] — Kasir memverifikasi catatan canvassing
+
+- **Tanggal:** 22 November 2026
+- **Story/Task:** US-16 / Task 4, 5, 6
+- **Dikerjakan oleh:** Shalwa
+- **Perubahan:**
+  - Membuat service `App\Services\VerifikasiCanvassingService` untuk menangani aksi verifikasi terima (`tervalidasi`) dan tolak (`ditolak` dengan alasan wajib 5–500 karakter), isolasi cabang, penguncian baris (`lockForUpdate`), pengisian `diverifikasi_oleh`, dan pencatatan riwayat perubahan ke tabel `riwayat_status`.
+  - Membuat komponen halaman Livewire Kasir `resources/views/pages/kasir/⚡canvassing.blade.php` dengan ringkasan stat card (catatan menunggu, galon menunggu, total setoran Rp7.000 × kuantitas), tab filter status, tabel per kurir tanpa data pelanggan, badge metode pembayaran Tunai/QR, modal konfirmasi terima dengan catatan opsional, dan modal tolak ber-alasan.
+  - Menambahkan route `kasir.canvassing` di `routes/web.php` dalam grup middleware auth kasir.
+  - Menambahkan menu `Verifikasi Canvassing` di sidebar kasir `resources/views/layouts/app/sidebar.blade.php`.
+  - Membuat rangkaian feature test `tests/Feature/Kasir/VerifikasiCanvassingTest.php` (25 pengujian).
+- **Acceptance criteria yang lulus:**
+  - Daftar catatan berstatus `menunggu_verifikasi` di cabang kasir tampil dengan benar.
+  - Data pelanggan tidak ditampilkan (canvassing tanpa data pelanggan).
+  - Nilai setoran Rp7.000 × kuantitas galon, metode Tunai/QR.
+  - Terima mengubah status menjadi `tervalidasi` dan mengisi `diverifikasi_oleh` dengan ID kasir.
+  - Tolak mewajibkan alasan (5–500 karakter), mengubah status menjadi `ditolak`, dan mengisi `diverifikasi_oleh`.
+  - Setiap perubahan status tercatat di tabel `riwayat_status`.
+- **Tes dan hasil:**
+  - `composer test`: Pint passed, PHPStan 0 error, PHPUnit 444/444 tests passed (1.664 assertions).
+  - `php artisan test tests/Feature/Kasir/VerifikasiCanvassingTest.php`: 25/25 tests passed (92 assertions).
+  - `npm run build`: asset build sukses.
+- **Yang belum selesai / blocker:**
+  - Reviewer belum ditunjuk (DoD no. 8).
+  - Pengujian visual di peramban (browser) oleh tim/reviewer.
+- **Reviewer:** belum ada
+- **Status yang diusulkan:** REVIEW
+- **Saran pesan commit (tidak dijalankan):**
+  - `feat(US-16): implement cashier canvassing verification with audit trail and status management`
