@@ -83,6 +83,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // [US-15] Kasir & Admin Cabang: daftar transaksi cabang dengan filter
     Route::livewire('cabang/transaksi', 'pages::cabang.transaksi')->name('cabang.transaksi');
+
+    // [US-16] Kasir: verifikasi catatan canvassing kurir
+    Route::livewire('kasir/canvassing', 'pages::kasir.canvassing')->name('kasir.canvassing');
 });
 
 require __DIR__.'/settings.php';

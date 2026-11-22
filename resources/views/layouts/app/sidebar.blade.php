@@ -93,6 +93,13 @@
                     wire:navigate>
                     {{ __('Pesanan COD') }}
                 </flux:sidebar.item>
+
+                <flux:sidebar.item icon="check-badge" :href="route('kasir.canvassing')"
+                    :current="request()->routeIs('kasir.canvassing*')"
+                    class="data-current:border-transparent! data-current:bg-primary-strong! data-current:text-white!"
+                    wire:navigate>
+                    {{ __('Verifikasi Canvassing') }}
+                </flux:sidebar.item>
             @endif
 
             @if ($currentUser->isAdminCabang() || $currentUser->role === \App\Enums\Role::Kasir)
